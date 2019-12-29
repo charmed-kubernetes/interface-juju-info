@@ -51,7 +51,7 @@ class JujuInfoClient(Endpoint):
         Note: This uses ingress-address, so it will work with cross-model
         relations.
         """
-        addrs = {u.recieved_raw['ingress-address']
+        addrs = {u.received_raw['ingress-address']
                  for u in self.all_joined_units}
         return list(sorted(addrs))
 
@@ -75,7 +75,7 @@ class JujuInfoClient(Endpoint):
         """
         return {
             r.application_name: {
-                u.unit_name: u.recieved_raw['ingress-address']
+                u.unit_name: u.received_raw['ingress-address']
                 for u in r.joined_units
             } for r in self.relations
         }
